@@ -1,0 +1,28 @@
+Exemplos de compilação de programas
+
+1) Compilar o programa "exemplo.c"
+
+   make SOURCES=exemplo.c 
+
+2) Transferir o programa compilado para o robô
+
+   make SOURCES=exemplo.c load
+
+3) Compilar o programa que está em file1.c e file2.c
+
+   make SOURCES="file1.c file2.c"
+   
+4) Compilar o programa "exemplo.c" e correr o programa pterm no final
+
+   make SOURCES=exemplo.c run
+   
+   
+Para limpar todos os ficheiros desnecessários
+
+   make clean
+
+Para limpar todos os ficheiros, excepto os ficheiros fonte:
+
+   make cleanall
+ 
+  
