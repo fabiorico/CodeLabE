@@ -14,9 +14,9 @@
  *
  * \brief Functions for interfacing MR32 platform. 
  *	Based on  mr32.h and mr32.c of J.L.Azevedo - sweet.ua.pt/jla/
- * \date 25-04-2014 
+ * \date 25-03-2014 
  * 
- *  */ 
+ **/ 
  
  
 #include <detpic32.h>
@@ -24,8 +24,6 @@
 // boolean
 #define TRUE 1					///< define TRUE, same as 1 
 #define FALSE 0					///< define FALSE, same as 0 
-#define OUT 0	///< Outpute. Usefull for defining port direction on pic32mx
-#define	IN 	1	///< Input. Usefull for defining port direction on pic32mx
 
 
 /**
@@ -49,22 +47,6 @@
 #define LED5   LATBbits.LATB15	
 ///@}
 
-/**
- * \name Motor Manegement
- *   Driving bits for motor driver and driving sequence
- * */
- 
-///@{ 
-#define M1_IN1 LATBbits.LATB5
-#define M1_IN2 LATCbits.LATC13
-#define M2_IN1 LATBbits.LATB13
-#define M2_IN2 LATFbits.LATF3
-#define STDBY  LATCbits.LATC14		
-#define M1_FORWARD M1_IN1=1; M1_IN2=0
-#define M1_REVERSE M1_IN1=0; M1_IN2=1
-#define M2_FORWARD M2_IN1=0; M2_IN2=1
-#define M2_REVERSE M2_IN1=1; M2_IN2=0
-///@}
 
 
 /**
@@ -129,17 +111,5 @@ void delay_us(unsigned int ms);
  */
 void setSpeed(int velL, int velR);	
 
-/** 
- * \fn actuateMotors()
- *
- * \brief Drives motor speed and direction. Periodicly invoked, without user interaction, by Timer2 ISR (each 10 ms) 
- * 
- * \param none
- * 
- * \returns none
- */
-void actuateMotors();		
-
 void initPIC32(void);						
 
-void isr_t2(void);							/** @brief Timer2 ISR, */

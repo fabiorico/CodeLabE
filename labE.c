@@ -1,6 +1,39 @@
 #include "labE.h"
 
+/* Miscellaneous defines */
+
+/* Input and output */ 
+#define OUT 0	///< Output. Useful for defining port direction on pic32mx
+#define	IN 	1	///< Input. Useful for defining port direction on pic32mx
+
+
+/* Motor control */ 
+#define M1_IN1 LATBbits.LATB5
+#define M1_IN2 LATCbits.LATC13
+#define M2_IN1 LATBbits.LATB13
+#define M2_IN2 LATFbits.LATF3
+#define STDBY  LATCbits.LATC14		
+#define M1_FORWARD M1_IN1=1; M1_IN2=0
+#define M1_REVERSE M1_IN1=0; M1_IN2=1
+#define M2_FORWARD M2_IN1=0; M2_IN2=1
+#define M2_REVERSE M2_IN1=1; M2_IN2=0
+
+
 static int velRight=0, velLeft=0; // motor speed
+
+/*
+ * actuateMotors()
+ *
+ * \brief Drives motor speed and direction. Periodicly invoked, without user interaction, by Timer2 ISR (each 10 ms) 
+ * 
+ * \param none
+ * 
+ * \returns none
+ */
+void actuateMotors();		
+
+void isr_t2(void);							/** @brief Timer2 ISR, */
+
 
 // ****************************************************************************
 // initPIC32()
@@ -171,6 +204,8 @@ void setSpeed(int velL, int velR)
 	velRight = velR;
 	EnableInterrupts();
 }
+
+
 void actuateMotors()
 {
 
