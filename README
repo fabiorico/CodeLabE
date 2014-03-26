@@ -26,3 +26,4 @@ Para limpar todos os ficheiros, excepto os ficheiros fonte:
    make cleanall
  
 
+teste
