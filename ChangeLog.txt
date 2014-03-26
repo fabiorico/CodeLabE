@@ -1,0 +1,50 @@
+pf@ua.pt
+Wed Mar 26 16:12:31 WET 2014
+
+
+labE.h 
+
+- correções diversas de inglês
+
+- definições seguintes mudados para dentro de labE.c. Não devem ser publicamente
+visiveis. 
+
+#define OUT 0	///< Outpute. Usefull for defining port direction on pic32mx
+#define	IN 	1	///< Input. Usefull for defining port direction on pic32mx
+
+/**
+ * \name Motor Manegement
+ *   Driving bits for motor driver and driving sequence
+ * */
+ 
+///@{ 
+#define M1_IN1 LATBbits.LATB5
+#define M1_IN2 LATCbits.LATC13
+#define M2_IN1 LATBbits.LATB13
+#define M2_IN2 LATFbits.LATF3
+#define STDBY  LATCbits.LATC14		
+#define M1_FORWARD M1_IN1=1; M1_IN2=0
+#define M1_REVERSE M1_IN1=0; M1_IN2=1
+#define M2_FORWARD M2_IN1=0; M2_IN2=1
+#define M2_REVERSE M2_IN1=1; M2_IN2=0
+///@}
+
+/** 
+ * \fn actuateMotors()
+ *
+ * \brief Drives motor speed and direction. Periodicly invoked, without user interaction, by Timer2 ISR (each 10 ms) 
+ * 
+ * \param none
+ * 
+ * \returns none
+ */
+void actuateMotors();		
+
+
+void isr_t2(void);							/** @brief Timer2 ISR, */
+
+
+
+labE.c
+
+

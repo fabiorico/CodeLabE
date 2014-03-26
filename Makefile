@@ -27,7 +27,7 @@
 # Your program can have more than one source file. Use space to 
 # separate the name of the source files. 
 # The first file name will be used for the name of the hex file. 
-#SOURCES=exemplo.c 
+SOURCES=test.c 
 
 # The name of the target can also be defined in the command line
 # (overrides the definition in the file) when calling make.
